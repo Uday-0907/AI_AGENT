@@ -137,7 +137,7 @@ def build_agent(data_file_path: str, extra_tools=None):
             # multi-step tool-calling workflows. If this errors (rate limit,
             # not enabled on your key/tier), fall back to "gemini-3.6-flash"
             # or the older stable "gemini-2.5-flash".
-            model="gemini-3.8-flash",
+            model="gemini-3.5-flash-lite",
             temperature=0,
             google_api_key=api_key,
         )
