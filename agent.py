@@ -113,7 +113,7 @@ def build_agent(data_file_path: str, extra_tools=None):
         ).split_documents(docs)
 
         embeddings = GoogleGenerativeAIEmbeddings(
-            model="models/text-embedding-004",
+            model="models/gemini-embedding-001",
             google_api_key=api_key,
         )
 
@@ -133,7 +133,11 @@ def build_agent(data_file_path: str, extra_tools=None):
 
     try:
         llm = ChatGoogleGenerativeAI(
-            model="gemini-1.5-flash",
+            # gemini-3.8-flash: current GA Flash model, tuned for agentic /
+            # multi-step tool-calling workflows. If this errors (rate limit,
+            # not enabled on your key/tier), fall back to "gemini-3.6-flash"
+            # or the older stable "gemini-2.5-flash".
+            model="gemini-3.8-flash",
             temperature=0,
             google_api_key=api_key,
         )
